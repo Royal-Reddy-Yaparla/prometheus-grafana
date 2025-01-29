@@ -1,5 +1,5 @@
 
-## Promethues - grafana  
+## prometheus - grafana  
 
 <img src="./images/prometheus-grafana.png" alt="Getting started" />
 
@@ -50,7 +50,7 @@
                 
                 ```bash
                 wget https://github.com/prometheus/prometheus/releases/download/v3.0.1/prometheus-3.0.1.linux-amd64.tar.gz
-                tax -xf prometheus-3.0.1.linux-amd64.tar.gz
+                tar -xf prometheus-3.0.1.linux-amd64.tar.gz
                 mv prometheus-3.0.1.linux-amd64.tar.gz prometheus
                 ```
                 
@@ -59,13 +59,13 @@
                     - `prometheus` which is the script file, we run the Prometheus, but we make it service
                     - `prometheus.yaml`  which configuration file
                 - Prometheus service
-                    - vim `/etc/systemd/systen/promethues.service`
+                    - vim `/etc/systemd/system/prometheus.service`
                     
                     ```bash
                     [Unit]
-                    Description=prometheus service
+                    Description=prometheus service.
                     [Service]
-                    ExecStart= /opt/promethues/promethues --config.file=/opt/promethues/promethues/prometheus.yml
+                    ExecStart= /opt/prometheus/prometheus --config.file=/opt/prometheus/prometheus/prometheus.yml
                     [Install]
                     WantedBy=multi-user.target
                     ```
@@ -73,9 +73,9 @@
                 - start service
                     
                     ```bash
-                    systemctl start promethue
-                    systemctl enable promethue
-                    systemctl status promethues
+                    systemctl start prometheus
+                    systemctl enable prometheus
+                    systemctl status prometheus
                     ```
                     
                 - service will run on port 9090
@@ -88,7 +88,7 @@
                     - up[2m]
                     ```
                     
-                - see `promethues.yaml` file to know configuration and add targets
+                - see `prometheus.yaml` file to know configuration and add targets
         
         ### **Prometheus-node:**
         
@@ -135,7 +135,7 @@
         
         Make the connection between master and nord_exporter
         
-        we have to update node_exporter IP in promethues master promethues.yaml file
+        we have to update node_exporter IP in prometheus master prometheus.yaml file
         
         ```yaml
         # my global config
@@ -198,7 +198,7 @@
         - access HTTP://<IP>:3000
             - username: admin password: admin
             - select connection → data source → Prometheus → URL (Prometheus itself )
-            - here we can run promethues query in grafana
+            - here we can run prometheus query in grafana
             - select prometheus in connection in grafana
     - **dynamic scrapping**
         - in cloud and dynamic environments IP addresses are temporary
@@ -286,7 +286,7 @@
         - resources:
             - https://prometheus.io/docs/prometheus/latest/configuration/configuration/#ec2_sd_config
             - https://gist.github.com/anthonydahanne/014ab52f69c3e50aad8bff65d4b5ddf0
-            - update in promethues.yaml
+            - update in prometheus.yaml
             
             ```bash
             - job_name: ec2-scrapping

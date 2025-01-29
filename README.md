@@ -45,7 +45,7 @@ Catagory-4: business will not be impacted if stops the services
 
 Note: 
     
-    - ELS
+    - ELK
         - latency | Traffic | Error
     
     - Prometheus - grafana
